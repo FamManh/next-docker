@@ -5,7 +5,6 @@ import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    console.log(navigator);
     if (
       navigator.userAgent.includes("Google Page Speed Insights") ||
       navigator.userAgent.includes("Chrome-Lighthouse")
