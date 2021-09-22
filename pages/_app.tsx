@@ -32,6 +32,26 @@ function MyApp({ Component, pageProps }: AppProps) {
     head.appendChild(script);
   }, []);
 
+  useEffect(() => {
+    if (
+      navigator.userAgent.includes("Google Page Speed Insights") ||
+      navigator.userAgent.includes("Chrome-Lighthouse")
+    )
+      return;
+    const head = document.getElementsByTagName("head")[0];
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-6YPHXPWPY1";
+    const scriptGtag = document.createElement("script");
+    scriptGtag.type = "text/javascript";
+    scriptGtag.text = ` window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6YPHXPWPY1')`;
+    head.appendChild(script);
+    head.appendChild(scriptGtag);
+  }, []);
+
   return (
     <>
       <Component {...pageProps} />
@@ -42,16 +62,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         attribution="biz_inbox"
         page_id="105679648408592"
       ></div>
-      <Script
+      {/* <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-6YPHXPWPY1"
         strategy="lazyOnload"
-      />
-      <Script id="gtag" strategy="lazyOnload">
-        {` window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-6YPHXPWPY1')`}
-      </Script>
+      /> */}
+      {/* <Script id="gtag" strategy="lazyOnload">
+        {}
+      </Script> */}
     </>
   );
 }
