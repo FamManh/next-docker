@@ -42,24 +42,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         attribution="biz_inbox"
         page_id="105679648408592"
       ></div>
-      {/* <Script id="fb" strategy="lazyOnload">
-        {`
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v12.0'
-        });
-      };
-
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));`}
-      </Script> */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-6YPHXPWPY1"
+        strategy="lazyOnload"
+      />
+      <Script id="gtag" strategy="lazyOnload">
+        {` window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6YPHXPWPY1')`}
+      </Script>
     </>
   );
 }
